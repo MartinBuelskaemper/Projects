@@ -2,22 +2,18 @@ import datetime
 
 my_date = datetime.date(2016, 7, 11)
 
-class Clothing(object):
+class Clothing:
     """
     The Clothing class defines a piece of clothing in terms of its
     name and its cleanliness.
     """
     amount_clothes=0 #statische Variable
 
-    def __init__(self, name, clean=True):
+    def __init__(self, name):
         self.name=name
-        self.clean=clean
 
     def getName(self,name):
         return self.name
-
-    def isClean(self,clean):
-        return self.clean
 
     @classmethod
     def raiseAmount(cls,amount):
@@ -40,12 +36,20 @@ class Clothing(object):
             return False
         return True
 
+class SportClothes(Clothing):
+
+    amount_clothes = 0
+
+    def __init__(self,name, price):
+        super().__init__(name)
+        self.price=price
+
 
 def main():
     #test the Clothing Class
-    myJeans = Clothing("blue jeans",False)
+    myJeans = Clothing("blue jeans")
     myShorts = Clothing("shorts")
-    print(Clothing.is_workday(my_date))
+    running_shoes = SportClothes("Running Shoes",60)
 
 if __name__ == "__main__":
     main()
